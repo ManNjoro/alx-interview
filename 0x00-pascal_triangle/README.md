@@ -1,0 +1,1 @@
+Pascal's Triangle is a mathematical construct that is formed by starting with the number 1 at the apex. Each subsequent row is constructed by adding the number above and to the left with the number above and to the right of a particular position. Each row starts and ends with 1. 
