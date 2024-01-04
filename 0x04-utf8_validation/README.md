@@ -7,7 +7,8 @@ Write a method that determines if a given data set represents a valid UTF-8 enco
 - The data set can contain multiple characters
 - The data will be represented by a list of integers
 - Each integer represents 1 byte of data, therefore you - only need to handle the 8 least significant bits of each integer
-Example:
+
+### Example:
 ```
 └─$ cat 0-main.py             
 #!/usr/bin/python3
@@ -26,7 +27,7 @@ print(validUTF8(data))
 data = [229, 65, 127, 256]
 print(validUTF8(data))
 ```
-Output:
+### Output:
 ```
 └─$ ./0-main.py
 True
