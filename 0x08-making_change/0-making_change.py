@@ -12,17 +12,12 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    amountsArray = [float('inf')] * (total + 1)
 
+    amountsArray = [float('inf')] * (total + 1)
     amountsArray[0] = 0
-    for i in range(1, total + 1):
-        for coin in coins:
-            if i - coin >= 0:
-                amountsArray[i] = min(
-                    amountsArray[i],
-                    amountsArray[i - coin] + 1
-                )
-    if amountsArray[total] != float('inf'):
-        return amountsArray[total]
-    else:
-        return -1
+
+    for coin in coins:
+        for i in range(coin, total + 1):
+            amountsArray[i] = min(amountsArray[i], amountsArray[i - coin] + 1)
+
+    return amountsArray[total] if amountsArray[total] != float('inf') else -1
