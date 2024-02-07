@@ -9,32 +9,15 @@ def island_perimeter(grid):
     """
     Calculates the perimeter of the island described in grid
     """
-    def explore(grid, row, col, visited):
-        rowInbounds = 0 <= row and row < len(grid)
-        colInbounds = 0 <= col and col < len(grid[0])
+    perimeter = 0
 
-        if not rowInbounds or not colInbounds:
-            return 0
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == 1:
+                perimeter += 4
+                if i > 0 and grid[i - 1][j] == 1:
+                    perimeter -= 2
+                if j > 0 and grid[i][j - 1] == 1:
+                    perimeter -= 2
 
-        if grid[row][col] == 0:
-            return 0
-
-        pos = (row, col)
-        if (pos in visited):
-            return 0
-        visited.add(pos)
-        size = 1
-        size += explore(grid, row - 1, col, visited)
-        size += explore(grid, row + 1, col, visited)
-        explore(grid, row, col - 1, visited)
-        explore(grid, row, col + 1, visited)
-        return size
-
-    visited = set()
-    minSize = float('inf')
-    for row in range(len(grid)):
-        for col in range(len(grid[0])):
-            size = explore(grid, row, col, visited)
-            if size > 0 and size < minSize:
-                minSize = size
-    return minSize * 4
+    return perimeter
